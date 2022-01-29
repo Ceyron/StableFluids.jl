@@ -119,6 +119,8 @@ KINEMATIC_VISCOSITY = 0.0001
 TIME_STEP_LENGTH = 0.01
 N_TIME_STEPS = 300
 
+PLOT_INTERACTIVELY = true
+
 function backtrace!(
     backtraced_positions,
     original_positions,
@@ -249,8 +251,12 @@ function main()
         d_u__d_y = diff(velocity_x, dims=2)[2:end, :]
         d_v__d_x = diff(velocity_y, dims=1)[:, 2:end]
         curl = d_u__d_y - d_v__d_x
-        display(heatmap(x_interval, y_interval, curl', c=:diverging_bkr_55_10_c35_n256, aspect_ratio=:equal, size=(680, 650)))
-        savefig("collision_2d_$iter.png")
+        if PLOT_INTERACTIVELY
+            display(heatmap(x_interval, y_interval, curl', c=:diverging_bkr_55_10_c35_n256, aspect_ratio=:equal, size=(680, 650)))
+        else
+            plotref = heatmap(x_interval, y_interval, curl', c=:diverging_bkr_55_10_c35_n256, aspect_ratio=:equal, size=(680, 650))
+            savefig(plotref, "collision_2d_$iter.png")
+        end
     end
 end
 
