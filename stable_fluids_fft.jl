@@ -255,6 +255,6 @@ function main()
 end
 
 # Only run if this is loaded as a script
-if @__MODULE__ == Main && !isinteractive()
+if @__MODULE__() == Main && !isinteractive()
     main()
 end
