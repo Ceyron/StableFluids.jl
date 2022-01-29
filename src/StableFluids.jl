@@ -14,4 +14,7 @@ module StableFluids
 
     run_2D() = TwoDims.main()
     run_3D() = ThreeDims.main()
+
+    load_2D() = TwoDims.load_movie()
+    play_2D(args...) = TwoDims.replay_movie(args...)
 end
