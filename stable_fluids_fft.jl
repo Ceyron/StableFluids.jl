@@ -249,8 +249,8 @@ function main()
         d_u__d_y = diff(velocity_x, dims=2)[2:end, :]
         d_v__d_x = diff(velocity_y, dims=1)[:, 2:end]
         curl = d_u__d_y - d_v__d_x
-        display(heatmap(x_interval, y_interval, curl', c=:diverging_bkr_55_10_c35_n256, aspect_ratio=:equal, size=(680, 650)))
-        savefig("collision_2d_$iter.png")
+        plotref = heatmap(x_interval, y_interval, curl', c=:diverging_bkr_55_10_c35_n256, aspect_ratio=:equal, size=(680, 650))
+        savefig(plotref, "collision_2d_$iter.png")
     end
 end
 
