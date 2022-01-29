@@ -19,18 +19,40 @@ accurate as more advanced techniques used in Computational Fluid Dynamics.
 
 Make sure you have all the dependencies installed. You can do so by entering a Julia REPL session and then execute
 
-    ] add FFTW Plots ProgressMeter Interpolations LinearAlgebra WriteVTK
+```
+    ] add https://github.com/Ceyron/StableFluids.jl
+```
 
-Then you can run the 2D version by
+Then you can run the 2D version by running the file as a script:
 
-    julia stable_fluids_fft.jl
+```
+    julia --project=. stable_fluids_fft.jl
+```
+
+or within the Julia REPL:
+
+```julia
+    using StableFluids
+    cd(mktempdir())
+    StableFluids.run_2D()
+```
 
 The 2D version is set up in a way that it interactively plots the curl
 (=vorticity magnitude) of the velocity field while it is simulating.
 
 To run the 3D version execute
 
-    julia stable_fluids_fft_3d.jl
+```
+    julia --project=. stable_fluids_fft_3d.jl
+```
+
+or within the Julia REPL:
+
+```julia
+    using StableFluids
+    cd(mktempdir())
+    StableFluids.run_3D()
+```
 
 This will not interactively visualize, but rather writes out VTK files that you
 can the later on visualize with another software, e.g. ParaView. You can find a
